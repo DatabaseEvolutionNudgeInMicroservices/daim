@@ -1,0 +1,119 @@
+
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Databases in Microservices</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif; text-align: left;
+          }
+          svg {
+            width: 100%;
+            height: 100vh;
+          }
+        </style>
+    </head>
+    <body>
+    <h1>Database Categories Associations</h1>
+    
+    <svg></svg>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+    <script>
+
+    // Layout
+
+    const width = 500
+    const height = 1000
+
+    // Colors
+
+    const COLORS = {"Relational":"#3f85b5","Document":"#17bf1d","Key-Value":"#f64134","Column":"#ffa75e","Graph":"#9e29b2","Time series":"#f9e538","Vector":"#008eff","Spatial":"#a9dc6d","Object":"#f474c1","Event":"#7f2020","Search":"#7cf4f9","Others":"#c4c4c4"};
+
+    function mixColors(sets) {
+      let totalR = 0, totalG = 0, totalB = 0;
+      sets.forEach(c => {
+        c = COLORS[c].replace(/^#/, '');
+        if (c.length === 3) c = c.split('').map(x => x + x).join('');
+        totalR += parseInt(c.slice(0, 2), 16);
+        totalG += parseInt(c.slice(2, 4), 16);
+        totalB += parseInt(c.slice(4, 6), 16);
+      });
+      const avgR = Math.round(totalR / sets.length);
+      const avgG = Math.round(totalG / sets.length);
+      const avgB = Math.round(totalB / sets.length);
+      return `#${(1 << 24 | avgR << 16 | avgG << 8 | avgB).toString(16).slice(1).toUpperCase()}`;
+    }
+
+    // Stankey
+
+    const sankey = d3.sankey()
+        .nodeWidth(20)
+        .nodePadding(15)
+        .size([width, height])
+        .nodeId(d => d.label);
+
+    const {nodes: sankeyNodes, links: sankeyLinks} = sankey({
+      nodes: [{"label":"Relational"},{"label":"Key-Value"},{"label":"Document"},{"label":"Search"},{"label":"Column"},{"label":"Relational \\ { Key-Value ∪ Document ∪ Search ∪ Column }"},{"label":"Key-Value \\ { Relational ∪ Document ∪ Search ∪ Column }"},{"label":"Relational ∩ Key-Value"},{"label":"Document \\ { Relational ∪ Key-Value ∪ Search ∪ Column }"},{"label":"Relational ∩ Document"},{"label":"Key-Value ∩ Document"},{"label":"Relational ∩ Key-Value ∩ Document"},{"label":"Search \\ { Relational ∪ Key-Value ∪ Document ∪ Column }"},{"label":"Relational ∩ Search"},{"label":"Key-Value ∩ Search"},{"label":"Relational ∩ Key-Value ∩ Search"},{"label":"Document ∩ Search"},{"label":"Relational ∩ Document ∩ Search"},{"label":"Key-Value ∩ Document ∩ Search"},{"label":"Relational ∩ Key-Value ∩ Document ∩ Search"},{"label":"Column \\ { Relational ∪ Key-Value ∪ Document ∪ Search }"},{"label":"Relational ∩ Column"},{"label":"Key-Value ∩ Column"},{"label":"Relational ∩ Key-Value ∩ Column"},{"label":"Document ∩ Column"},{"label":"Relational ∩ Document ∩ Column"},{"label":"Key-Value ∩ Document ∩ Column"},{"label":"Relational ∩ Key-Value ∩ Document ∩ Column"},{"label":"Search ∩ Column"},{"label":"Relational ∩ Search ∩ Column"},{"label":"Key-Value ∩ Search ∩ Column"},{"label":"Relational ∩ Key-Value ∩ Search ∩ Column"},{"label":"Relational ∩ Document ∩ Search ∩ Column"},{"label":"Key-Value ∩ Document ∩ Search ∩ Column"},{"label":"Relational ∩ Key-Value ∩ Document ∩ Search ∩ Column"}].map(d => Object.assign({}, d)),
+      links: [{"source":"Relational","target":"Relational \\ { Key-Value ∪ Document ∪ Search ∪ Column }","value":337},{"source":"Key-Value","target":"Key-Value \\ { Relational ∪ Document ∪ Search ∪ Column }","value":70},{"source":"Relational","target":"Relational ∩ Key-Value","value":91.5},{"source":"Key-Value","target":"Relational ∩ Key-Value","value":91.5},{"source":"Document","target":"Document \\ { Relational ∪ Key-Value ∪ Search ∪ Column }","value":90},{"source":"Relational","target":"Relational ∩ Document","value":18.5},{"source":"Document","target":"Relational ∩ Document","value":18.5},{"source":"Key-Value","target":"Key-Value ∩ Document","value":18},{"source":"Document","target":"Key-Value ∩ Document","value":18},{"source":"Relational","target":"Relational ∩ Key-Value ∩ Document","value":14.333333333333334},{"source":"Key-Value","target":"Relational ∩ Key-Value ∩ Document","value":14.333333333333334},{"source":"Document","target":"Relational ∩ Key-Value ∩ Document","value":14.333333333333334},{"source":"Search","target":"Search \\ { Relational ∪ Key-Value ∪ Document ∪ Column }","value":31},{"source":"Relational","target":"Relational ∩ Search","value":16},{"source":"Search","target":"Relational ∩ Search","value":16},{"source":"Key-Value","target":"Key-Value ∩ Search","value":3},{"source":"Search","target":"Key-Value ∩ Search","value":3},{"source":"Relational","target":"Relational ∩ Key-Value ∩ Search","value":13},{"source":"Key-Value","target":"Relational ∩ Key-Value ∩ Search","value":13},{"source":"Search","target":"Relational ∩ Key-Value ∩ Search","value":13},{"source":"Document","target":"Document ∩ Search","value":4},{"source":"Search","target":"Document ∩ Search","value":4},{"source":"Relational","target":"Relational ∩ Document ∩ Search","value":2},{"source":"Document","target":"Relational ∩ Document ∩ Search","value":2},{"source":"Search","target":"Relational ∩ Document ∩ Search","value":2},{"source":"Key-Value","target":"Key-Value ∩ Document ∩ Search","value":2.6666666666666665},{"source":"Document","target":"Key-Value ∩ Document ∩ Search","value":2.6666666666666665},{"source":"Search","target":"Key-Value ∩ Document ∩ Search","value":2.6666666666666665},{"source":"Relational","target":"Relational ∩ Key-Value ∩ Document ∩ Search","value":2.5},{"source":"Key-Value","target":"Relational ∩ Key-Value ∩ Document ∩ Search","value":2.5},{"source":"Document","target":"Relational ∩ Key-Value ∩ Document ∩ Search","value":2.5},{"source":"Search","target":"Relational ∩ Key-Value ∩ Document ∩ Search","value":2.5},{"source":"Column","target":"Column \\ { Relational ∪ Key-Value ∪ Document ∪ Search }","value":6},{"source":"Relational","target":"Relational ∩ Column","value":3.5},{"source":"Column","target":"Relational ∩ Column","value":3.5},{"source":"Key-Value","target":"Key-Value ∩ Column","value":1},{"source":"Column","target":"Key-Value ∩ Column","value":1},{"source":"Relational","target":"Relational ∩ Key-Value ∩ Column","value":1.3333333333333333},{"source":"Key-Value","target":"Relational ∩ Key-Value ∩ Column","value":1.3333333333333333},{"source":"Column","target":"Relational ∩ Key-Value ∩ Column","value":1.3333333333333333},{"source":"Document","target":"Document ∩ Column","value":0.5},{"source":"Column","target":"Document ∩ Column","value":0.5},{"source":"Relational","target":"Relational ∩ Document ∩ Column","value":0.6666666666666666},{"source":"Document","target":"Relational ∩ Document ∩ Column","value":0.6666666666666666},{"source":"Column","target":"Relational ∩ Document ∩ Column","value":0.6666666666666666},{"source":"Key-Value","target":"Key-Value ∩ Document ∩ Column","value":0.6666666666666666},{"source":"Document","target":"Key-Value ∩ Document ∩ Column","value":0.6666666666666666},{"source":"Column","target":"Key-Value ∩ Document ∩ Column","value":0.6666666666666666},{"source":"Relational","target":"Relational ∩ Key-Value ∩ Document ∩ Column","value":0.5},{"source":"Key-Value","target":"Relational ∩ Key-Value ∩ Document ∩ Column","value":0.5},{"source":"Document","target":"Relational ∩ Key-Value ∩ Document ∩ Column","value":0.5},{"source":"Column","target":"Relational ∩ Key-Value ∩ Document ∩ Column","value":0.5},{"source":"Search","target":"Search ∩ Column","value":1},{"source":"Column","target":"Search ∩ Column","value":1},{"source":"Relational","target":"Relational ∩ Search ∩ Column","value":1},{"source":"Search","target":"Relational ∩ Search ∩ Column","value":1},{"source":"Column","target":"Relational ∩ Search ∩ Column","value":1},{"source":"Key-Value","target":"Key-Value ∩ Search ∩ Column","value":0.6666666666666666},{"source":"Search","target":"Key-Value ∩ Search ∩ Column","value":0.6666666666666666},{"source":"Column","target":"Key-Value ∩ Search ∩ Column","value":0.6666666666666666},{"source":"Relational","target":"Relational ∩ Key-Value ∩ Search ∩ Column","value":0.75},{"source":"Key-Value","target":"Relational ∩ Key-Value ∩ Search ∩ Column","value":0.75},{"source":"Search","target":"Relational ∩ Key-Value ∩ Search ∩ Column","value":0.75},{"source":"Column","target":"Relational ∩ Key-Value ∩ Search ∩ Column","value":0.75},{"source":"Relational","target":"Relational ∩ Document ∩ Search ∩ Column","value":0.25},{"source":"Document","target":"Relational ∩ Document ∩ Search ∩ Column","value":0.25},{"source":"Search","target":"Relational ∩ Document ∩ Search ∩ Column","value":0.25},{"source":"Column","target":"Relational ∩ Document ∩ Search ∩ Column","value":0.25},{"source":"Key-Value","target":"Key-Value ∩ Document ∩ Search ∩ Column","value":0.5},{"source":"Document","target":"Key-Value ∩ Document ∩ Search ∩ Column","value":0.5},{"source":"Search","target":"Key-Value ∩ Document ∩ Search ∩ Column","value":0.5},{"source":"Column","target":"Key-Value ∩ Document ∩ Search ∩ Column","value":0.5},{"source":"Relational","target":"Relational ∩ Key-Value ∩ Document ∩ Search ∩ Column","value":2.2},{"source":"Key-Value","target":"Relational ∩ Key-Value ∩ Document ∩ Search ∩ Column","value":2.2},{"source":"Document","target":"Relational ∩ Key-Value ∩ Document ∩ Search ∩ Column","value":2.2},{"source":"Search","target":"Relational ∩ Key-Value ∩ Document ∩ Search ∩ Column","value":2.2},{"source":"Column","target":"Relational ∩ Key-Value ∩ Document ∩ Search ∩ Column","value":2.2}].map(d => Object.assign({}, d))
+    });
+
+    // SVG
+
+    const svg = d3.select("svg")
+      .attr("viewBox", [width, 0, width, height + 10]);
+
+    // SVG node box
+
+    svg.append("g")
+      .selectAll("rect")
+      .data(sankeyNodes)
+      .join("rect")
+        .attr("x", d => d.x0)
+        .attr("y", d => d.y0)
+        .attr("height", d => d.y1 - d.y0)
+        .attr("width", d => d.x1 - d.x0)
+        .attr("fill", (d) => {
+          if (!d.label.includes("∩") && !d.label.includes("∪")) {
+            return COLORS[d.label];
+          } else if(d.label.includes("∪")) {
+            return COLORS[d.label.substring(0, d.label.indexOf(" "))]
+          } else {
+            const sets = d.label.split(" ∩ ");
+            return mixColors(sets);
+          }
+        })
+        //.attr("stroke", "#000")
+        .append("title")
+          .text(d => d.label);
+
+    // SVG node text
+
+    svg.append("g")
+      .selectAll("text")
+      .data(sankeyNodes)
+      .join("text")
+        .attr("x", d => d.x0 > (width / 2) ? d.x1 + 10 : d.x0 - 10)
+        .attr("y", d => (d.y1 + d.y0) / 2)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", d => d.x0 > (width / 2) ? "start" : "end")
+        .text(d => d.label.split(' ').map(t => t.match(/w/) !== 0 ? t.substring(0,1) : t).join(' '));
+
+    // SVG links
+    svg.append("g")
+      .attr("fill", "none")
+      .selectAll("path")
+      .data(sankeyLinks)
+      .join("path")
+        .attr("d", d3.sankeyLinkHorizontal())
+        .attr("stroke", d => COLORS[d.source.label] || "#bbb")
+        .attr("stroke-width", d => Math.max(1, d.width))
+        .attr("stroke-opacity", 0.5)
+        .append("title")
+          .text(d => `${d.source.label} → ${d.target.label}`);
+    </script>
+    </body>
+    

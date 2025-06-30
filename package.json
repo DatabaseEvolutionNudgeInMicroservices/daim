@@ -1,0 +1,63 @@
+{
+  "name": "daim",
+  "version": "0.0.1",
+  "description": "DAIM Scripts",
+  "scripts": {
+    "test": "node src/process/0-test.process.js",
+    "test-debug": "node --inspect src/process/0-test.process.js",
+    "scope": "node src/process/1-scope.process.js",
+    "filter": "node src/process/2-filter.process.js",
+    "refilter": "node src/process/3-refilter.process.js",
+    "enrich-readme": "node src/process/4-enrich-readme.process.js",
+    "enrich-docker-compose": "node src/process/4-enrich-docker-compose.process.js",
+    "enrich-service-database": "node src/process/4-enrich-service-database.process.js",
+    "distinguish": "node src/process/5-distinguish.process.js",
+    "analyze-11": "node src/process/6-analyze-1.1.process.js",
+    "analyze-12": "node src/process/6-analyze-1.2.process.js",
+    "analyze-13": "node src/process/6-analyze-1.3.process.js",
+    "analyze-21": "node src/process/6-analyze-2.1.process.js",
+    "analyze-22": "node src/process/6-analyze-2.2.process.js",
+    "analyze-23": "node src/process/6-analyze-2.3.process.js",
+    "analyze-24": "node src/process/6-analyze-2.4.process.js",
+    "analyze-25": "node src/process/6-analyze-2.5.process.js",
+    "analyze-26": "node src/process/6-analyze-2.6.process.js",
+    "analyze-27": "node src/process/6-analyze-2.7.process.js",
+    "analyze-28": "node src/process/6-analyze-2.8.process.js",
+    "analyze-31": "node src/process/6-analyze-3.1.process.js",
+    "analyze-32": "node src/process/6-analyze-3.2.process.js",
+    "analyze-33": "node src/process/6-analyze-3.3.process.js",
+    "analyze-34": "node src/process/6-analyze-3.4.process.js",
+    "analyze-35": "node src/process/6-analyze-3.5.process.js",
+    "analyze-36": "node src/process/6-analyze-3.6.process.js",
+    "analyze-41": "node src/process/6-analyze-4.1.process.js",
+    "analyze-42": "node src/process/6-analyze-4.2.process.js",
+    "analyze-43": "node src/process/6-analyze-4.3.process.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.unamur.be/denim/daim.git"
+  },
+  "author": "Souhaila SERBOUT, Maxime ANDRÉ, Marco RAGLIANTI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.unamur.be/denim/daim/issues"
+  },
+  "homepage": "https://gitlab.unamur.be/denim/daim#readme",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^16.4.7",
+    "install": "^0.13.0",
+    "mongodb": "^6.13.0",
+    "npm": "^11.2.0",
+    "winston": "^3.17.0",
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.4.2"
+  }
+}

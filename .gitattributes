@@ -1,0 +1,3 @@
+results/daim.ranges.json filter=lfs diff=lfs merge=lfs -text
+results/daim.repositories.json filter=lfs diff=lfs merge=lfs -text
+results/daim.repositories_microservices.json filter=lfs diff=lfs merge=lfs -text

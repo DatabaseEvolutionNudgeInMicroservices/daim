@@ -1,0 +1,77 @@
+
+      <!DOCTYPE html>
+      <html lang="fr">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Databases in Microservices</title>
+          <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+          <style>
+            body { font-family: Arial, sans-serif; text-align: left; }
+          </style>
+      </head>
+      <body>
+
+      <h1>Database Categories Pairing</h1>
+
+      <div id="chart"></div>
+
+      <script>
+      const elements = [...new Set([{"sets":["Relational","Relational"],"size":"71.64"},{"sets":["Relational","Key-Value"],"size":"29.35"},{"sets":["Relational","Document"],"size":"11.14"},{"sets":["Relational","Search"],"size":"10.45"},{"sets":["Relational","Column"],"size":"3.28"},{"sets":["Relational","Time series"],"size":"2.39"},{"sets":["Relational","Vector"],"size":"0.70"},{"sets":["Relational","Others"],"size":"0.80"},{"sets":["Relational","Event"],"size":"0.90"},{"sets":["Relational","Graph"],"size":"0.80"},{"sets":["Relational","Spatial"],"size":"0.30"},{"sets":["Key-Value","Relational"],"size":"29.35"},{"sets":["Key-Value","Key-Value"],"size":"42.09"},{"sets":["Key-Value","Document"],"size":"11.34"},{"sets":["Key-Value","Search"],"size":"8.06"},{"sets":["Key-Value","Column"],"size":"2.79"},{"sets":["Key-Value","Time series"],"size":"2.59"},{"sets":["Key-Value","Vector"],"size":"1.29"},{"sets":["Key-Value","Others"],"size":"0.80"},{"sets":["Key-Value","Event"],"size":"0.40"},{"sets":["Key-Value","Graph"],"size":"0.50"},{"sets":["Key-Value","Spatial"],"size":"0.30"},{"sets":["Document","Relational"],"size":"11.14"},{"sets":["Document","Key-Value"],"size":"11.34"},{"sets":["Document","Document"],"size":"25.77"},{"sets":["Document","Search"],"size":"4.58"},{"sets":["Document","Column"],"size":"2.09"},{"sets":["Document","Time series"],"size":"1.29"},{"sets":["Document","Vector"],"size":"0.50"},{"sets":["Document","Others"],"size":"0.50"},{"sets":["Document","Event"],"size":"0.90"},{"sets":["Document","Graph"],"size":"0.60"},{"sets":["Document","Spatial"],"size":"0.10"},{"sets":["Search","Relational"],"size":"10.45"},{"sets":["Search","Key-Value"],"size":"8.06"},{"sets":["Search","Document"],"size":"4.58"},{"sets":["Search","Search"],"size":"16.32"},{"sets":["Search","Column"],"size":"2.39"},{"sets":["Search","Time series"],"size":"1.49"},{"sets":["Search","Vector"],"size":"0.30"},{"sets":["Search","Others"],"size":"0.50"},{"sets":["Search","Event"],"size":"0.80"},{"sets":["Search","Graph"],"size":"0.50"},{"sets":["Search","Spatial"],"size":"0.10"},{"sets":["Column","Relational"],"size":"3.28"},{"sets":["Column","Key-Value"],"size":"2.79"},{"sets":["Column","Document"],"size":"2.09"},{"sets":["Column","Search"],"size":"2.39"},{"sets":["Column","Column"],"size":"4.98"},{"sets":["Column","Time series"],"size":"0.40"},{"sets":["Column","Vector"],"size":"0.20"},{"sets":["Column","Others"],"size":"0.30"},{"sets":["Column","Event"],"size":"0.10"},{"sets":["Column","Graph"],"size":"0.30"},{"sets":["Column","Spatial"],"size":"0.00"},{"sets":["Time series","Relational"],"size":"2.39"},{"sets":["Time series","Key-Value"],"size":"2.59"},{"sets":["Time series","Document"],"size":"1.29"},{"sets":["Time series","Search"],"size":"1.49"},{"sets":["Time series","Column"],"size":"0.40"},{"sets":["Time series","Time series"],"size":"3.78"},{"sets":["Time series","Vector"],"size":"0.00"},{"sets":["Time series","Others"],"size":"0.30"},{"sets":["Time series","Event"],"size":"0.10"},{"sets":["Time series","Graph"],"size":"0.20"},{"sets":["Time series","Spatial"],"size":"0.20"},{"sets":["Vector","Relational"],"size":"0.70"},{"sets":["Vector","Key-Value"],"size":"1.29"},{"sets":["Vector","Document"],"size":"0.50"},{"sets":["Vector","Search"],"size":"0.30"},{"sets":["Vector","Column"],"size":"0.20"},{"sets":["Vector","Time series"],"size":"0.00"},{"sets":["Vector","Vector"],"size":"1.89"},{"sets":["Vector","Others"],"size":"0.00"},{"sets":["Vector","Event"],"size":"0.00"},{"sets":["Vector","Graph"],"size":"0.10"},{"sets":["Vector","Spatial"],"size":"0.00"},{"sets":["Others","Relational"],"size":"0.80"},{"sets":["Others","Key-Value"],"size":"0.80"},{"sets":["Others","Document"],"size":"0.50"},{"sets":["Others","Search"],"size":"0.50"},{"sets":["Others","Column"],"size":"0.30"},{"sets":["Others","Time series"],"size":"0.30"},{"sets":["Others","Vector"],"size":"0.00"},{"sets":["Others","Others"],"size":"1.39"},{"sets":["Others","Event"],"size":"0.10"},{"sets":["Others","Graph"],"size":"0.10"},{"sets":["Others","Spatial"],"size":"0.10"},{"sets":["Event","Relational"],"size":"0.90"},{"sets":["Event","Key-Value"],"size":"0.40"},{"sets":["Event","Document"],"size":"0.90"},{"sets":["Event","Search"],"size":"0.80"},{"sets":["Event","Column"],"size":"0.10"},{"sets":["Event","Time series"],"size":"0.10"},{"sets":["Event","Vector"],"size":"0.00"},{"sets":["Event","Others"],"size":"0.10"},{"sets":["Event","Event"],"size":"1.49"},{"sets":["Event","Graph"],"size":"0.00"},{"sets":["Event","Spatial"],"size":"0.00"},{"sets":["Graph","Relational"],"size":"0.80"},{"sets":["Graph","Key-Value"],"size":"0.50"},{"sets":["Graph","Document"],"size":"0.60"},{"sets":["Graph","Search"],"size":"0.50"},{"sets":["Graph","Column"],"size":"0.30"},{"sets":["Graph","Time series"],"size":"0.20"},{"sets":["Graph","Vector"],"size":"0.10"},{"sets":["Graph","Others"],"size":"0.10"},{"sets":["Graph","Event"],"size":"0.00"},{"sets":["Graph","Graph"],"size":"1.00"},{"sets":["Graph","Spatial"],"size":"0.00"},{"sets":["Spatial","Relational"],"size":"0.30"},{"sets":["Spatial","Key-Value"],"size":"0.30"},{"sets":["Spatial","Document"],"size":"0.10"},{"sets":["Spatial","Search"],"size":"0.10"},{"sets":["Spatial","Column"],"size":"0.00"},{"sets":["Spatial","Time series"],"size":"0.20"},{"sets":["Spatial","Vector"],"size":"0.00"},{"sets":["Spatial","Others"],"size":"0.10"},{"sets":["Spatial","Event"],"size":"0.00"},{"sets":["Spatial","Graph"],"size":"0.00"},{"sets":["Spatial","Spatial"],"size":"0.80"}].flatMap(d => d.sets))];
+      const n = elements.length;
+      const matrix = Array.from({ length: n }, () => Array(n).fill(0));
+
+      [{"sets":["Relational","Relational"],"size":"71.64"},{"sets":["Relational","Key-Value"],"size":"29.35"},{"sets":["Relational","Document"],"size":"11.14"},{"sets":["Relational","Search"],"size":"10.45"},{"sets":["Relational","Column"],"size":"3.28"},{"sets":["Relational","Time series"],"size":"2.39"},{"sets":["Relational","Vector"],"size":"0.70"},{"sets":["Relational","Others"],"size":"0.80"},{"sets":["Relational","Event"],"size":"0.90"},{"sets":["Relational","Graph"],"size":"0.80"},{"sets":["Relational","Spatial"],"size":"0.30"},{"sets":["Key-Value","Relational"],"size":"29.35"},{"sets":["Key-Value","Key-Value"],"size":"42.09"},{"sets":["Key-Value","Document"],"size":"11.34"},{"sets":["Key-Value","Search"],"size":"8.06"},{"sets":["Key-Value","Column"],"size":"2.79"},{"sets":["Key-Value","Time series"],"size":"2.59"},{"sets":["Key-Value","Vector"],"size":"1.29"},{"sets":["Key-Value","Others"],"size":"0.80"},{"sets":["Key-Value","Event"],"size":"0.40"},{"sets":["Key-Value","Graph"],"size":"0.50"},{"sets":["Key-Value","Spatial"],"size":"0.30"},{"sets":["Document","Relational"],"size":"11.14"},{"sets":["Document","Key-Value"],"size":"11.34"},{"sets":["Document","Document"],"size":"25.77"},{"sets":["Document","Search"],"size":"4.58"},{"sets":["Document","Column"],"size":"2.09"},{"sets":["Document","Time series"],"size":"1.29"},{"sets":["Document","Vector"],"size":"0.50"},{"sets":["Document","Others"],"size":"0.50"},{"sets":["Document","Event"],"size":"0.90"},{"sets":["Document","Graph"],"size":"0.60"},{"sets":["Document","Spatial"],"size":"0.10"},{"sets":["Search","Relational"],"size":"10.45"},{"sets":["Search","Key-Value"],"size":"8.06"},{"sets":["Search","Document"],"size":"4.58"},{"sets":["Search","Search"],"size":"16.32"},{"sets":["Search","Column"],"size":"2.39"},{"sets":["Search","Time series"],"size":"1.49"},{"sets":["Search","Vector"],"size":"0.30"},{"sets":["Search","Others"],"size":"0.50"},{"sets":["Search","Event"],"size":"0.80"},{"sets":["Search","Graph"],"size":"0.50"},{"sets":["Search","Spatial"],"size":"0.10"},{"sets":["Column","Relational"],"size":"3.28"},{"sets":["Column","Key-Value"],"size":"2.79"},{"sets":["Column","Document"],"size":"2.09"},{"sets":["Column","Search"],"size":"2.39"},{"sets":["Column","Column"],"size":"4.98"},{"sets":["Column","Time series"],"size":"0.40"},{"sets":["Column","Vector"],"size":"0.20"},{"sets":["Column","Others"],"size":"0.30"},{"sets":["Column","Event"],"size":"0.10"},{"sets":["Column","Graph"],"size":"0.30"},{"sets":["Column","Spatial"],"size":"0.00"},{"sets":["Time series","Relational"],"size":"2.39"},{"sets":["Time series","Key-Value"],"size":"2.59"},{"sets":["Time series","Document"],"size":"1.29"},{"sets":["Time series","Search"],"size":"1.49"},{"sets":["Time series","Column"],"size":"0.40"},{"sets":["Time series","Time series"],"size":"3.78"},{"sets":["Time series","Vector"],"size":"0.00"},{"sets":["Time series","Others"],"size":"0.30"},{"sets":["Time series","Event"],"size":"0.10"},{"sets":["Time series","Graph"],"size":"0.20"},{"sets":["Time series","Spatial"],"size":"0.20"},{"sets":["Vector","Relational"],"size":"0.70"},{"sets":["Vector","Key-Value"],"size":"1.29"},{"sets":["Vector","Document"],"size":"0.50"},{"sets":["Vector","Search"],"size":"0.30"},{"sets":["Vector","Column"],"size":"0.20"},{"sets":["Vector","Time series"],"size":"0.00"},{"sets":["Vector","Vector"],"size":"1.89"},{"sets":["Vector","Others"],"size":"0.00"},{"sets":["Vector","Event"],"size":"0.00"},{"sets":["Vector","Graph"],"size":"0.10"},{"sets":["Vector","Spatial"],"size":"0.00"},{"sets":["Others","Relational"],"size":"0.80"},{"sets":["Others","Key-Value"],"size":"0.80"},{"sets":["Others","Document"],"size":"0.50"},{"sets":["Others","Search"],"size":"0.50"},{"sets":["Others","Column"],"size":"0.30"},{"sets":["Others","Time series"],"size":"0.30"},{"sets":["Others","Vector"],"size":"0.00"},{"sets":["Others","Others"],"size":"1.39"},{"sets":["Others","Event"],"size":"0.10"},{"sets":["Others","Graph"],"size":"0.10"},{"sets":["Others","Spatial"],"size":"0.10"},{"sets":["Event","Relational"],"size":"0.90"},{"sets":["Event","Key-Value"],"size":"0.40"},{"sets":["Event","Document"],"size":"0.90"},{"sets":["Event","Search"],"size":"0.80"},{"sets":["Event","Column"],"size":"0.10"},{"sets":["Event","Time series"],"size":"0.10"},{"sets":["Event","Vector"],"size":"0.00"},{"sets":["Event","Others"],"size":"0.10"},{"sets":["Event","Event"],"size":"1.49"},{"sets":["Event","Graph"],"size":"0.00"},{"sets":["Event","Spatial"],"size":"0.00"},{"sets":["Graph","Relational"],"size":"0.80"},{"sets":["Graph","Key-Value"],"size":"0.50"},{"sets":["Graph","Document"],"size":"0.60"},{"sets":["Graph","Search"],"size":"0.50"},{"sets":["Graph","Column"],"size":"0.30"},{"sets":["Graph","Time series"],"size":"0.20"},{"sets":["Graph","Vector"],"size":"0.10"},{"sets":["Graph","Others"],"size":"0.10"},{"sets":["Graph","Event"],"size":"0.00"},{"sets":["Graph","Graph"],"size":"1.00"},{"sets":["Graph","Spatial"],"size":"0.00"},{"sets":["Spatial","Relational"],"size":"0.30"},{"sets":["Spatial","Key-Value"],"size":"0.30"},{"sets":["Spatial","Document"],"size":"0.10"},{"sets":["Spatial","Search"],"size":"0.10"},{"sets":["Spatial","Column"],"size":"0.00"},{"sets":["Spatial","Time series"],"size":"0.20"},{"sets":["Spatial","Vector"],"size":"0.00"},{"sets":["Spatial","Others"],"size":"0.10"},{"sets":["Spatial","Event"],"size":"0.00"},{"sets":["Spatial","Graph"],"size":"0.00"},{"sets":["Spatial","Spatial"],"size":"0.80"}].forEach(({ sets, size }) => {
+          const [a, b] = sets;
+          const i = elements.indexOf(a);
+          const j = elements.indexOf(b);
+          if (j <= i) {
+            matrix[i][j] = size;
+          }
+      });
+
+      const annotations = [];
+      for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n; j++) {
+              annotations.push({
+                  x: elements[j],
+                  y: elements[i],
+                  text: matrix[i][j] && matrix[i][j] > 0 ? matrix[i][j].toString() + '%' : /*'0%'*/ '',
+                  showarrow: false,
+                  font: {
+                      color: matrix[i][j] > 50 ? 'white' : 'black',
+                      size: 14
+                  }
+              });
+          }
+      }
+
+      const trace = {
+          z: matrix,
+          x: elements,
+          y: elements,
+          zmin: 0,     
+          zmax: 100,
+          type: 'heatmap',
+          colorscale: 'Greys',
+          reversescale: true,
+          showscale: true,
+      };
+
+      const layout = {
+          annotations: annotations,
+          width: 900,
+          height: 800,
+          yaxis: {
+            autorange: 'reversed'
+          },
+          xaxis: {
+            side: 'top'
+          }  
+      };
+
+      Plotly.newPlot('chart', [trace], layout);
+      </script>
+      </body>
+      </html>
+    

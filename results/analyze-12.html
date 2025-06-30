@@ -1,0 +1,127 @@
+
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Microservices per Database</title>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <style>
+          body { font-family: Arial, sans-serif; text-align: center; }
+          .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: center;
+          }
+          .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+          }
+          .legend-item span {
+            font-family: Arial;
+          }
+          .legend-color-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Microservices per Database Technologies Grouped By Categories</h1>
+        <div id="graph"></div>
+        <div class="legend">
+          
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #3f85b5"></div>
+                <span>Relational</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #f64134"></div>
+                <span>Key-Value</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #17bf1d"></div>
+                <span>Document</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #7cf4f9"></div>
+                <span>Search</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #ffa75e"></div>
+                <span>Column</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #f9e538"></div>
+                <span>Time series</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #008eff"></div>
+                <span>Vector</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #c4c4c4"></div>
+                <span>Others</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #7f2020"></div>
+                <span>Event</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #9e29b2"></div>
+                <span>Graph</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-color-box" style="background-color: #a9dc6d"></div>
+                <span>Spatial</span>
+              </div>
+            
+        </div>
+    
+        <script>
+          var data = [{
+            x: ["PostgreSQL","MySQL","MariaDB","MicrosoftSqlServer","CockroachDB","Oracle","MicrosoftAzureSqlEdge","IBMDB2","Firebird","SQLite","TiDB","GoogleCloudSpanner","Redis","etcd","Memcached","Valkey","Infinispan","ApacheAccumulo","ApacheGeode","Dragonfly","MongoDB","CouchDB","Couchbase","RethinkDB","RavenDB","CrateDB","Elasticsearch","OpenSearch","Meilisearch","ApacheSolr","Typesense","Splunk","ApacheCassandra","Clickhouse","hBase","DataStax","ScyllaDB","ApacheDruid","StarRocks","InfluxDB","TimescaleDB","TDengine","ApacheIoTDB","OpenTSDB","M3DB","Milvus","Qdrant","Weaviate","Chroma","AmazonDynamoDB","Aerospike","FoundationDB","ApacheIgnite","ArangoDB","SurrealDB","RDF4J","EventstoreDB","Neo4j","Dgraph","PostGIS"],
+            y: [498,242,82,63,12,11,6,5,2,1,1,1,390,39,11,7,2,1,1,1,242,13,4,4,1,1,139,19,8,5,3,1,30,17,6,2,2,1,1,27,10,1,1,1,1,9,9,3,2,9,2,2,1,1,1,1,15,10,1,8],
+            type: 'bar',
+            marker: {
+              color: ["#3f85b5","#3f85b5","#3f85b5","#3f85b5","#3f85b5","#3f85b5","#3f85b5","#3f85b5","#3f85b5","#3f85b5","#3f85b5","#3f85b5","#f64134","#f64134","#f64134","#f64134","#f64134","#f64134","#f64134","#f64134","#17bf1d","#17bf1d","#17bf1d","#17bf1d","#17bf1d","#17bf1d","#7cf4f9","#7cf4f9","#7cf4f9","#7cf4f9","#7cf4f9","#7cf4f9","#ffa75e","#ffa75e","#ffa75e","#ffa75e","#ffa75e","#ffa75e","#ffa75e","#f9e538","#f9e538","#f9e538","#f9e538","#f9e538","#f9e538","#008eff","#008eff","#008eff","#008eff","#c4c4c4","#c4c4c4","#c4c4c4","#c4c4c4","#c4c4c4","#c4c4c4","#c4c4c4","#7f2020","#9e29b2","#9e29b2","#a9dc6d"]
+            },
+          }];
+          
+          var layout = {
+            xaxis: {
+              title: {
+                text: 'Database technologies',
+                standoff: 15
+              },
+              tickangle: -45,
+              tickmode: 'array',
+            },
+            yaxis: {
+              title: '# Microservices'
+            },
+            height: 600,
+            margin: {
+              b: 150
+            }
+          };
+    
+          Plotly.newPlot('graph', data, layout);
+        </script>
+      </body>
+      </html>
+    

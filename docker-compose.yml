@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  daim:
+    container_name: daim
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app # Mapping of host directory with the /app directory in the container.
+      - /app/node_modules # Unmapping of the node_modules directory with the /app/node_modules directory in the container.
+    working_dir: /app
+    stdin_open: true # Interaction with the container.
+    tty: true # Terminal in the container.
+    command: sh # Shell in the container.
+    depends_on:
+      - mongo
+    env_file:
+      - .env
+
+  mongo:
+    image: mongo:latest
+    container_name: daim_mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db # Sychronization of the mongo_data volume with the /data/db directory in the container.
+
+volumes:
+  mongo_data: # Volume managed by Docker without a link on the host machine

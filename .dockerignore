@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+.DS_Store
+logs
+.vscode
+.env_sample
+.eslintrc.json
+.gitignore
+.prettierrc.json
+.git
+.gitignore

@@ -1,0 +1,56 @@
+
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Databases per Microservice</title>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jstat/1.9.4/jstat.min.js"></script>
+        <style>
+          body { font-family: Arial, sans-serif; text-align: left; }
+          table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+          }
+          th {
+            width: 250px;
+          }
+        </style>
+      </head>
+      <body>
+        <div id="graph">
+        <h1>Aged Microservices Databases Selection</h1>
+        <p>Criteria:</p>
+        <p>Age: >=13</p>
+        <br />
+        <p style="color: blue;">18 microservice(s) found</p>
+        <table>
+        <tr>
+          <th>Microservice</th>
+          <th>Creation date</th>
+          <th>Age</th>
+          <th>Databases technologies</th>
+          <th>Database categories</th>
+        </tr>
+          <tr><td><a href="https://www.github.com/cloudfoundry/uaa" target="_blank">cloudfoundry/uaa</a></td><td>2012-02-07T22:40:55.000Z</td><td>13</td><td>PostgreSQL<br/>MySQL</td><td>Relational</td></tr><tr><td><a href="https://www.github.com/Parisson/TimeSide" target="_blank">Parisson/TimeSide</a></td><td>2011-11-21T21:48:08.000Z</td><td>13</td><td>PostgreSQL<br/>Redis</td><td>Relational<br/>Key-Value</td></tr><tr><td><a href="https://www.github.com/danbooru/danbooru" target="_blank">danbooru/danbooru</a></td><td>2010-02-04T19:59:27.000Z</td><td>15</td><td>Redis<br/>PostgreSQL</td><td>Key-Value<br/>Relational</td></tr><tr><td><a href="https://www.github.com/BrighterCommand/Brighter" target="_blank">BrighterCommand/Brighter</a></td><td>2011-01-05T19:06:54.000Z</td><td>14</td><td>AmazonDynamoDB<br/>MongoDB<br/>MicrosoftSqlServer<br/>MySQL<br/>PostgreSQL<br/>Redis</td><td>Others<br/>Document<br/>Relational<br/>Key-Value</td></tr><tr><td><a href="https://www.github.com/OneBusAway/onebusaway-application-modules" target="_blank">OneBusAway/onebusaway-application-modules</a></td><td>2012-02-12T20:12:38.000Z</td><td>13</td><td>MySQL</td><td>Relational</td></tr><tr><td><a href="https://www.github.com/DSpace/DSpace" target="_blank">DSpace/DSpace</a></td><td>2012-03-16T21:44:52.000Z</td><td>13</td><td>PostgreSQL<br/>ApacheSolr</td><td>Relational<br/>Search</td></tr><tr><td><a href="https://www.github.com/owtf/owtf" target="_blank">owtf/owtf</a></td><td>2012-01-19T06:42:44.000Z</td><td>13</td><td>PostgreSQL</td><td>Relational</td></tr><tr><td><a href="https://www.github.com/awesomemotive/easy-digital-downloads" target="_blank">awesomemotive/easy-digital-downloads</a></td><td>2012-04-08T00:12:22.000Z</td><td>13</td><td>MariaDB</td><td>Relational</td></tr><tr><td><a href="https://www.github.com/brianc/node-postgres" target="_blank">brianc/node-postgres</a></td><td>2010-10-15T23:05:50.000Z</td><td>14</td><td>PostgreSQL</td><td>Relational</td></tr><tr><td><a href="https://www.github.com/thorsten/phpMyFAQ" target="_blank">thorsten/phpMyFAQ</a></td><td>2009-08-04T19:26:15.000Z</td><td>15</td><td>MariaDB<br/>PostgreSQL<br/>Elasticsearch</td><td>Relational<br/>Search</td></tr><tr><td><a href="https://www.github.com/benkeen/generatedata" target="_blank">benkeen/generatedata</a></td><td>2012-01-26T21:06:00.000Z</td><td>13</td><td>MariaDB</td><td>Relational</td></tr><tr><td><a href="https://www.github.com/sumeetchhetri/ffead-cpp" target="_blank">sumeetchhetri/ffead-cpp</a></td><td>2012-04-20T17:19:47.000Z</td><td>13</td><td>MongoDB<br/>MySQL<br/>PostgreSQL</td><td>Document<br/>Relational</td></tr><tr><td><a href="https://www.github.com/ServiceStack/ServiceStack.OrmLite" target="_blank">ServiceStack/ServiceStack.OrmLite</a></td><td>2011-02-08T00:14:57.000Z</td><td>14</td><td>Firebird<br/>MariaDB<br/>PostgreSQL<br/>Oracle<br/>MicrosoftSqlServer<br/>Redis<br/>AmazonDynamoDB</td><td>Relational<br/>Key-Value<br/>Others</td></tr><tr><td><a href="https://www.github.com/Sylius/Sylius" target="_blank">Sylius/Sylius</a></td><td>2011-11-05T22:05:52.000Z</td><td>13</td><td>MySQL</td><td>Relational</td></tr><tr><td><a href="https://www.github.com/nuxeo/nuxeo" target="_blank">nuxeo/nuxeo</a></td><td>2011-12-15T14:35:41.000Z</td><td>13</td><td>MariaDB<br/>MongoDB<br/>MySQL<br/>Oracle<br/>PostgreSQL</td><td>Relational<br/>Document</td></tr><tr><td><a href="https://www.github.com/openemr/openemr" target="_blank">openemr/openemr</a></td><td>2010-05-21T19:54:08.000Z</td><td>15</td><td>MariaDB<br/>MySQL<br/>CouchDB<br/>Redis</td><td>Relational<br/>Document<br/>Key-Value</td></tr><tr><td><a href="https://www.github.com/scalableminds/webknossos" target="_blank">scalableminds/webknossos</a></td><td>2012-05-14T16:26:17.000Z</td><td>13</td><td>PostgreSQL<br/>Redis</td><td>Relational<br/>Key-Value</td></tr><tr><td><a href="https://www.github.com/woocommerce/woocommerce" target="_blank">woocommerce/woocommerce</a></td><td>2011-08-09T15:12:11.000Z</td><td>13</td><td>MariaDB</td><td>Relational</td></tr>
+        </table>
+        
+        <br />
+
+        <table>
+        <tr>
+          <th>Database technology</th>
+          <th>Count</th>
+        </tr>
+          <td>PostgreSQL</td><td>12</td></tr><td>MySQL</td><td>7</td></tr><td>MariaDB</td><td>7</td></tr><td>Redis</td><td>6</td></tr><td>MongoDB</td><td>3</td></tr><td>Oracle</td><td>2</td></tr><td>MicrosoftSqlServer</td><td>2</td></tr><td>AmazonDynamoDB</td><td>2</td></tr><td>Firebird</td><td>1</td></tr><td>CouchDB</td><td>1</td></tr><td>Elasticsearch</td><td>1</td></tr><td>ApacheSolr</td><td>1</td></tr>
+        </table>
+
+        <br />
+
+        <table>
+        <tr>
+          <th>Database categories</th>
+          <th>Count</th>
+        </tr>
+          <td>Relational</td><td>31</td></tr><td>Key-Value</td><td>6</td></tr><td>Document</td><td>4</td></tr><td>Search</td><td>2</td></tr><td>Others</td><td>2</td></tr><td>Column</td><td>0</td></tr><td>Graph</td><td>0</td></tr><td>Time series</td><td>0</td></tr><td>Vector</td><td>0</td></tr><td>Spatial</td><td>0</td></tr><td>Object</td><td>0</td></tr><td>Event</td><td>0</td></tr>
