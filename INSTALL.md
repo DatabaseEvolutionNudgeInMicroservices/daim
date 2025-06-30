@@ -1,4 +1,4 @@
-# DAIM Scripts
+# DAIM
 
 ## Installation
 
@@ -25,12 +25,20 @@
 - DISCLAIMER: While this project is a valuable and helpful tool, it is essential to follow certain rules, particularly regarding API rate limits, authentication, and responsible token management. Adhering to these constraints ensures compliance with GitHub's policies and prevents disruptions in data collection. The authors of these scripts have taken all necessary measures to ensure compliance with the rules, regarding API rate limits and authentication management, particularly in the case of pooling and parallelization to name but a few. However, users of these scripts remain solely responsible for any consequences. The authors disclaim all responsibility in the event of misuse, abuse, circumvention, sanctions, non-compliance, or any other violation. Further reading [\[GitHub (2022, a)\]](https://docs.github.com/en/rest/about-the-rest-api/about-the-rest-api?apiVersion=2022-11-28), [\[GitHub (2022, b)\]](https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28), [\[GitHub (2022, c)\]](https://docs.github.com/en/rest/authentication/keeping-your-api-credentials-secure?apiVersion=2022-11-28), [\[GitHub (2022, d)\]](https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28), [\[GitHub (2022, e)\]](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28), [\[GitHub (2022, f)\]](https://docs.github.com/en/rest/using-the-rest-api/troubleshooting-the-rest-api?apiVersion=2022-11-28), [\[GitHub (2022, g)\]](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api?apiVersion=2022-11-28), [\[GitHub (2022, h)\]](https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28#limitations-on-query-length), [\[GitHub (2022, i)\]](https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28#about-search).
 - Generate and collect GitHub tokens from one or more active GitHub accounts. [GitHub](https://github.com/) > [Settings](https://github.com/settings/profile) > [Developer Settings](https://github.com/settings/apps) > [Personal access tokens](https://github.com/settings/personal-access-tokens) > [Generate new token](https://github.com/settings/personal-access-tokens/new) > Enter a "Token name" > Define an "Expiration" date > Select "Public Repositories (read-only)" > Click on "Generate token".
 
-5. GitHub LFS:
+5. Git LFS:
 
 - Install [GitHub LFS](https://git-lfs.com/) for the MongoDB dump restoration using the following command.
 
 ```
 git lfs install
+```
+
+⚠️ This command must be run after downloading and installing Git LFS for your operating system and before cloning the repository for the first time.
+
+⚠️ If you have already cloned it, some files in the [`/results`](./results) directory are just git lfs placeholders. After the previous step, you can run the following command to integrate the lfs handled files.
+
+```
+git lfs pull
 ```
 
 6. Environment variables:
